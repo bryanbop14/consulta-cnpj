@@ -1,12 +1,5 @@
 const API_BASE_URL = 'https://publica.cnpja.com.br';
 
-/**
- * Busca dados de uma empresa por CNPJ
- * @param {Object} params - Parâmetros de busca
- * @param {string} params.tipo - Tipo de busca ('cnpj')
- * @param {string} params.valor - Valor do CNPJ (somente números)
- * @returns {Promise<Object>} - Dados da empresa ou erro
- */
 export const searchCompany = async (params) => {
   try {
     const { tipo, valor } = params;
@@ -16,7 +9,7 @@ export const searchCompany = async (params) => {
     }
 
     const response = await fetch(`${API_BASE_URL}/${tipo}/${valor}`);
-    
+
     if (!response.ok) {
       if (response.status === 404) {
         throw new Error('CNPJ não encontrado.');
